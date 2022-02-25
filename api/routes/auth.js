@@ -5,9 +5,11 @@ const jwt = require('jsonwebtoken');
 
 //REGISTER
 router.post('/register', async (req, res) => {
+  console.log('going to create new user');
+  console.log(`request username is ${req.body.username}`);
   const newUser = new User({
-    username: req.body.username,
     email: req.body.email,
+    username: req.body.username,
     password: CryptoJS.AES.encrypt(
       req.body.password,
       process.env.SECRET_KEY
@@ -15,14 +17,19 @@ router.post('/register', async (req, res) => {
   });
 
   try {
+    console.log('wat happen');
+    console.log(newUser.username);
+    console.log(newUser.email);
+    console.log(newUser.password);
     const user = await newUser.save();
+
     const { password, ...info } = user._doc;
     res.status(201).json(info);
   } catch (err) {
+    console.log('failed to create');
+    console.log(err);
     res.status(500).json(err);
   }
-
-  res.json(user);
 });
 
 //LOGIN

@@ -19,6 +19,9 @@ import Login from './pages/login/Login';
 import { useState, useEffect, useMemo, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from './context/authContext/AuthContext';
+import ListList from './pages/listList/ListList';
+import List from './pages/list/List';
+import NewList from './pages/newList/NewList';
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -46,6 +49,9 @@ function App() {
                 <Route path="/movies" element={<ProductList />} />
                 <Route path="/product/:productId" element={<Product />} />
                 <Route path="/newproduct" element={<NewProduct />} />
+                <Route path="/lists" element={<ListList />} />
+                <Route path="/list/:listId" element={<List />} />
+                <Route path="/newList" element={<NewList />} />
               </Routes>
             </div>
           </>

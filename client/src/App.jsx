@@ -11,9 +11,11 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from './authContext/AuthContext';
 
 const App = () => {
-  const user = true;
+  const { user } = useContext(AuthContext);
 
   return (
     <div>
@@ -30,7 +32,7 @@ const App = () => {
           />
           <Route
             path="/login"
-            element={!user ? <Register /> : <Navigate to="/" />}
+            element={!user ? <Login /> : <Navigate to="/" />}
           />
           {user && (
             <>

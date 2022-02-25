@@ -1,18 +1,46 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './register.scss';
+import axios from 'axios';
 
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
   const emailRef = useRef();
   const passwordRef = useRef();
+  const usernameRef = useRef();
+  const navigate = useNavigate();
 
   const handleStart = () => {
     setEmail(emailRef.current.value);
   };
 
-  const handleFinish = () => {
+  const handleUsername = () => {
+    setUsername(usernameRef.current.value);
+  };
+
+  const handlePassword = () => {
     setPassword(passwordRef.current.value);
+  };
+
+  const handleFinish = async (e) => {
+    e.preventDefault();
+
+    console.log(`username value os ${username}`);
+    console.log(`password value is ${password}`);
+
+    try {
+      await axios.post('http://localhost:8080/api/auth/register', {
+        email,
+        username,
+        password,
+      });
+      navigate('/login');
+    } catch (err) {
+      console.log('apa lanjiao');
+      console.log(err);
+    }
   };
 
   return (
@@ -40,7 +68,18 @@ export default function Register() {
           </div>
         ) : (
           <form className="input">
-            <input type="password" placeholder="password" ref={passwordRef} />
+            <input
+              type="username"
+              placeholder="username"
+              onChange={handleUsername}
+              ref={usernameRef}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              onChange={handlePassword}
+              ref={passwordRef}
+            />
             <button className="registerButton" onClick={handleFinish}>
               Start
             </button>

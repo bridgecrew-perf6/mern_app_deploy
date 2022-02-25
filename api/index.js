@@ -6,6 +6,7 @@ const authRoute = require('./routes/auth');
 const userRoute = require('./routes/users');
 const movieRoute = require('./routes/movies');
 const listRoute = require('./routes/lists');
+var bodyParser = require('body-parser');
 
 const cors = require('cors');
 
@@ -29,7 +30,15 @@ mongoose
 
 //make the app accept json format request
 
-app.use(express.json());
+/*
+app.use(
+  express.json();
+);
+*/
+// parse application/json
+app.use(express.json({}));
+app.use(express.urlencoded());
+
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/movies', movieRoute);

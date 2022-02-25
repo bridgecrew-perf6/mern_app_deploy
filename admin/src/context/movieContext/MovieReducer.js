@@ -55,6 +55,27 @@ const MovieReducer = (state, action) => {
         error: true,
       };
 
+    case 'UPLOAD_MOVIES_START':
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case 'UPLOAD_MOVIES_SUCCESS':
+      return {
+        movies: state.movies.map(
+          (movie) => movie._id === action.payload._id && action.payload
+        ),
+        isFetching: false,
+        error: false,
+      };
+    case 'UPLOAD_MOVIES_FAILURE':
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+
     default:
       return { ...state };
   }

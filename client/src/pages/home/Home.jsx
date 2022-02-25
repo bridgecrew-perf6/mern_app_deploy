@@ -15,13 +15,13 @@ const Home = ({ type }) => {
 
       try {
         const res = await axios.get(
-          `lists${type ? '?type=' + type : ''}${
+          `http://localhost:8080/api/lists${type ? '?type=' + type : ''}${
             genre ? '&genre=' + genre : ''
           }`,
           {
             headers: {
               token:
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTA5MDNiOWFlZDY2NTY3Y2QwMWVhMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NTMyNTI5MywiZXhwIjoxNjQ1NzU3MjkzfQ.tHwexW6OeYIjn-liQMYGR0nsMxh67bkoe4GKaxHz1Qg',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTA5MDNiOWFlZDY2NTY3Y2QwMWVhMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NTc5OTcxMiwiZXhwIjoxNjQ2MjMxNzEyfQ.-h32Q-qs0FfrFWHf1wbKTV_o0vT-GjQRT0lwM637VAM',
             },
           }
         );

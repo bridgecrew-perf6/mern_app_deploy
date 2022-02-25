@@ -9,12 +9,15 @@ const Featured = ({ type }) => {
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`/movies/random?type=${type}`, {
-          headers: {
-            token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTA5MDNiOWFlZDY2NTY3Y2QwMWVhMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NTMyNTI5MywiZXhwIjoxNjQ1NzU3MjkzfQ.tHwexW6OeYIjn-liQMYGR0nsMxh67bkoe4GKaxHz1Qg',
-          },
-        });
+        const res = await axios.get(
+          `http://localhost:8080/api/movies/random?type=${type}`,
+          {
+            headers: {
+              token:
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTA5MDNiOWFlZDY2NTY3Y2QwMWVhMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NTc5OTcxMiwiZXhwIjoxNjQ2MjMxNzEyfQ.-h32Q-qs0FfrFWHf1wbKTV_o0vT-GjQRT0lwM637VAM',
+            },
+          }
+        );
         setContent(res.data[0]);
       } catch (err) {
         console.log(err);
