@@ -29,3 +29,13 @@
   color: red;
   cursor: pointer;
 }
+.productAddButton {
+  width: 120px;
+  text-decoration: none;
+  z-index: 999;
+  margin-bottom: 10px;
+}
+
+.productTitleContainer {
+  margin-bottom: 10px;
+}

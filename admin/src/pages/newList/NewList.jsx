@@ -50,18 +50,27 @@ export default function NewList() {
           </div>
           <div className="addProductItem">
             <label>Genre</label>
-            <input
-              type="text"
-              placeholder="action"
-              name="genre"
-              onChange={handleChange}
-            />
+            <select name="genre" id="genre" onChange={handleChange}>
+              <option value="adventure">Adventure</option>
+              <option value="comedy">Comedy</option>
+              <option value="crime">Crime</option>
+              <option value="fantansy">Fantansy</option>
+              <option value="historical">Historical</option>
+              <option value="horror">Horror</option>
+              <option value="romance">Romance</option>
+              <option value="sci-fi">Sci-fi</option>
+              <option value="thriller">Thriller</option>
+              <option value="western">Western</option>
+              <option value="animation">Animation</option>
+              <option value="drama">Drama</option>
+              <option value="documentary">Documentary</option>
+            </select>
           </div>
           <div className="addProductItem">
             <label>Type</label>
             <select name="type" onChange={handleChange}>
               <option>Type</option>
-              <option value="movie">Movie</option>
+              <option value="movies">Movie</option>
               <option value="series">Series</option>
             </select>
           </div>
