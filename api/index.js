@@ -48,13 +48,14 @@ app.use(
 app.use(express.json({}));
 app.use(express.urlencoded());
 
-app.use(express.static(path.join(__dirname, '/client/build')));
+//app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/movies', movieRoute);
 app.use('/api/lists', listRoute);
 
+/*
 app.get('*', (req, res) => {
   console.log('For every unmatch request apa lanjiao u return');
   console.log(
@@ -62,6 +63,7 @@ app.get('*', (req, res) => {
   );
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
+*/
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('Backend server is running');
