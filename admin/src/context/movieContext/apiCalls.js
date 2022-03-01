@@ -9,6 +9,7 @@ import {
   createMoviesSuccess,
   createMoviesFailure,
 } from './MovieActions';
+import { axiosInstance } from '../../config';
 
 import axios from 'axios';
 
@@ -17,7 +18,7 @@ export const getMovies = async (dispatch) => {
 
   try {
     console.log('Lai liao calling movies api');
-    const res = await axios.get('http://localhost:8080/api/movies/', {
+    const res = await axiosInstance.get('/movies', {
       headers: {
         token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken,
       },
@@ -38,7 +39,7 @@ export const createMovie = async (movie, dispatch) => {
   try {
     console.log('Lai liao calling create movies api');
     console.log(JSON.parse(localStorage.getItem('user')).accessToken);
-    const res = await axios.post('http://localhost:8080/api/movies', movie, {
+    const res = await axiosInstance.post('/movies', movie, {
       headers: {
         token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken,
       },
@@ -58,7 +59,7 @@ export const deleteMovies = async (id, dispatch) => {
 
   try {
     console.log('Lai liao calling delete movies api');
-    await axios.delete('http://localhost:8080/api/movies/' + id, {
+    await axiosInstance.delete('/movies' + id, {
       headers: {
         token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken,
       },
